@@ -7,11 +7,24 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "dcc": "docker compose -f cicd/dev/docker-compose.yml --env-file .env",
+    "db-push": "npx drizzle-kit push --config=db/drizzle.config.ts",
+    "db-seed": "tsx ./db/seed.ts",
+    "db-generate": "npx drizzle-kit generate --config=db/drizzle.config.ts",
+    "db-migrate": "npx drizzle-kit migrate --config=db/drizzle.config.ts"
   },
   "dependencies": {
     "nuxt": "^3.13.2",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.35.3",
+    "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.10",
+    "drizzle-kit": "^0.26.2",
+    "tsx": "^4.19.1"
   }
 }
