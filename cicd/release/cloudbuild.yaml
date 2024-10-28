@@ -1,0 +1,43 @@
+steps:
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'build'
+    args: [
+      'build', 
+      '-t', '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_DOCKER_REPOSITORY}/${_DOCKER_IMAGE}:latest', 
+      '-f', '${_DOCKER_FILE}', 
+      '.'
+    ]
+          
+  # Docker Push
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'push'
+    args: [
+      'push', 
+      '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_DOCKER_REPOSITORY}/${_DOCKER_IMAGE}:latest'
+    ]
+
+  # Deploy
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'deploy'
+    entrypoint: gcloud
+    args: [
+      'run',
+      'deploy',
+      '${_SERVICE_NAME}',
+      '--image', '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_DOCKER_REPOSITORY}/${_DOCKER_IMAGE}:latest',
+      '--region','${_LOCATION}',
+      '--no-allow-unauthenticated',
+      '--add-cloudsql-instances', '${PROJECT_ID}:${_LOCATION}:${_CLOUD_SQL_INSTANCE}'
+    ]
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _LOCATION: asia-northeast1
+  _SERVICE_NAME: nuxt-pg
+  _DOCKER_FILE: ./cicd/release/Dockerfile
+  _DOCKER_REPOSITORY: nuxt-pg-repository
+  _DOCKER_IMAGE: nuxt-pg-image
+  _CLOUD_SQL_INSTANCE: nuxt-pg-db
