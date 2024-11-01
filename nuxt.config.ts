@@ -5,7 +5,13 @@ const NoirPreset = useCustomThemePreset()
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/fonts', '@primevue/nuxt-module'],
+  ssr: false,
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/fonts',
+    '@primevue/nuxt-module',
+    'nuxt-vuefire'
+  ],
   devtools: { enabled: true },
   future: {
     compatibilityVersion: 4
@@ -31,6 +37,17 @@ export default defineNuxtConfig({
     components: {
       prefix: 'p'
     }
+  },
+  vuefire: {
+    auth: true,
+    config: {
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      apiKey: process.env.FIREBASE_API_KEY,
+      authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    },
+    emulators: {
+      enabled: false,
+    },
   },
   css: ['~/assets/styles/app.css', 'primeicons/primeicons.css'],
 })
