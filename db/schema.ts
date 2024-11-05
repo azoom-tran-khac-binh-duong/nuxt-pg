@@ -1,3 +1,5 @@
+import { z } from 'zod';
+import { createSelectSchema } from 'drizzle-zod';
 import { boolean, integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
@@ -8,3 +10,6 @@ export const usersTable = pgTable("users", {
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at'),
 });
+
+export const usersSchema = createSelectSchema(usersTable);
+export type User = z.infer<typeof usersSchema>
