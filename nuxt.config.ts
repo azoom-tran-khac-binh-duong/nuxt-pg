@@ -9,7 +9,8 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@primevue/nuxt-module',
-    'nuxt-vuefire'
+    'nuxt-vuefire',
+    '@pinia/nuxt'
   ],
   ssr: false,
   devtools: { enabled: true },
@@ -35,7 +36,7 @@ export default defineNuxtConfig({
         preset: NoirPreset,
         options: {
           cssLayer: true,
-          cssLayerOrder: 'app, primeui'
+          cssLayerOrder: 'app, primeui, az-search'
         }
       }
     },

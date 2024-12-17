@@ -37,7 +37,8 @@
 const pageMeta = computed(() => useRoute().meta.custom)
 
 const navLinks = [
-  { title: 'Dashboard', path: '/dashboard' }
+  { title: 'Dashboard', path: '/dashboard' },
+  { title: 'Users', path: '/dashboard/users' }
 ]
 </script>
 

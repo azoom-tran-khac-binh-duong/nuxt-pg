@@ -17,8 +17,10 @@
     "db-migrate": "npx drizzle-kit migrate --config=db/drizzle.config.ts"
   },
   "dependencies": {
+    "@azoom/component-search-3-primevue": "0.1.1-beta-44",
     "@nuxt/eslint": "^0.6.1",
     "@nuxt/fonts": "^0.10.2",
+    "@pinia/nuxt": "^0.9.0",
     "@primevue/themes": "^4.1.1",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.35.3",
@@ -28,6 +30,7 @@
     "nuxt": "^3.13.2",
     "nuxt-vuefire": "^1.0.4",
     "pg": "^8.13.0",
+    "pinia": "^2.3.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.1.1",
     "vue": "latest",

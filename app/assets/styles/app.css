@@ -9,3 +9,19 @@ body {
     box-sizing: border-box;
   }
 }
+
+/* Custom az search styles */
+:root {
+  --az-search-primary-color: 9, 9, 11;
+}
+
+@layer az-search {
+  .p-dialog-header {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .p-inputtext {
+    padding: 8px 16px;
+  }
+}
