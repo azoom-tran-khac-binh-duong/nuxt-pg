@@ -54,7 +54,7 @@ const handleLogin = async () => {
 
   try {
     await signInWithEmailAndPassword(auth, form.email, form.password);
-    return navigateTo((route.query.redirect as string) || "/");
+    return navigateTo((route.query.redirect as string) || "/dashboard");
   } catch (error) {
     console.error(error);
   }

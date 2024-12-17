@@ -1,3 +1,11 @@
 body {
   font-family: 'DM Sans', sans-serif;
 }
+
+@layer app {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}

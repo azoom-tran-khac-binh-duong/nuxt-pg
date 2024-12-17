@@ -1,10 +1,11 @@
 <template>
-  <NuxtWelcome />
+  <div />
 </template>
 
 <script setup lang="ts">
 definePageMeta({
-  middleware: 'auth',
-  layout: false
+  custom: {
+    title: 'Dashboard'
+  }
 })
 </script>
