@@ -37,7 +37,19 @@ export const useUserStore = defineStore('user-store', () => {
 })
 
 function useUserSearchStore() {
-  const userSearchStore = useAzSearchStore('user-search-store')
+  const userSearchStore = useAzSearchStore('user-search-store', {
+    persistedState: {
+       persist: {
+        pick: [
+            'preference.histories', 
+            'preference.bookmarks', 
+            'preference.pinnedFilterNames', 
+            'preference.initialized'
+        ],
+        storage: piniaPluginPersistedstate.localStorage(),
+      },
+    }
+  })
   
   // Define filter categories
   const filterCategory = {

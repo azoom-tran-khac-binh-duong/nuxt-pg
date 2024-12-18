@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@primevue/nuxt-module',
     'nuxt-vuefire',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt'
   ],
   ssr: false,
   devtools: { enabled: true },
